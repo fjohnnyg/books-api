@@ -5,7 +5,6 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const REGISTER_URL = "/auth/register";
 
 const Register = () => {
-  const emailRef = useRef();
 
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
@@ -13,12 +12,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const [name, setName] = useState("");
-
-  const [errMsg, setErrMsg] = useState("");
-
-  useEffect(() => {
-    emailRef.current.focus();
-  }, []);
 
   useEffect(() => {
     setValidEmail(EMAIL_REGEX.test(email));
@@ -32,19 +25,8 @@ const Register = () => {
     setName(name);
   }, [name]);
 
-  useEffect(() => {
-    setErrMsg("");
-  }, [email]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const v1 = EMAIL_REGEX.test(email);
-    const v2 = password;
-    const v3 = name;
-    if (!v1 || !v2 || !v3) {
-      setErrMsg("Invalid Entry");
-      return;
-    }
 
     const data = {
       email: email,
@@ -73,7 +55,6 @@ const Register = () => {
         <input
           type="text"
           id="email"
-          ref={emailRef}
           autoComplete="of"
           onChange={(e) => setEmail(e.target.value)}
           value={email}
