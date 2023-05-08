@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "../../api/axios";
 
-const API_URL = 'http://5.22.217.225:8081/api/v1/book';
+const API_URL = '/book/?sort_by=year&order_by=desc';
 
 export const getBooks = () => {
-  return axios.get(API_URL);
+  return axios.get(API_URL );
 };
 
 export const getBookById = (id) => {
