@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "../../api/axios";
 
-const API_URL = 'http://5.22.217.225:8081/api/v1/book';
+const API_URL = '/book';
 
 export const getBooks = () => {
   return axios.get(API_URL);
